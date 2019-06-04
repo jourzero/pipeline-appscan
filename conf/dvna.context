@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+    <context>
+        <name>dvna</name>
+        <desc/>
+        <inscope>true</inscope>
+        <incregexes>http://dvna:9090.*</incregexes>
+        <incregexes>https://dvna:9090.*</incregexes>
+        <excregexes>.*/app/useredit.*</excregexes>
+        <excregexes>.*/logout.*</excregexes>
+        <excregexes>.*/forgotpw.*</excregexes>
+        <excregexes>.*/resetpw.*</excregexes>
+        <tech>
+            <include>Db.MySQL</include>
+            <include>Db.SQLite</include>
+            <include>Language.JSP/Servlet</include>
+            <include>Language.XML</include>
+            <include>OS.Linux</include>
+            <include>WS.Apache</include>
+            <include>WS.Tomcat</include>
+            <exclude>Db</exclude>
+            <exclude>Db.CouchDB</exclude>
+            <exclude>Db.Firebird</exclude>
+            <exclude>Db.HypersonicSQL</exclude>
+            <exclude>Db.IBM DB2</exclude>
+            <exclude>Db.Microsoft Access</exclude>
+            <exclude>Db.Microsoft SQL Server</exclude>
+            <exclude>Db.MongoDB</exclude>
+            <exclude>Db.Oracle</exclude>
+            <exclude>Db.PostgreSQL</exclude>
+            <exclude>Db.SAP MaxDB</exclude>
+            <exclude>Db.Sybase</exclude>
+            <exclude>Language</exclude>
+            <exclude>Language.ASP</exclude>
+            <exclude>Language.C</exclude>
+            <exclude>Language.PHP</exclude>
+            <exclude>OS</exclude>
+            <exclude>OS.MacOS</exclude>
+            <exclude>OS.Windows</exclude>
+            <exclude>SCM</exclude>
+            <exclude>SCM.Git</exclude>
+            <exclude>SCM.SVN</exclude>
+            <exclude>WS</exclude>
+            <exclude>WS.IIS</exclude>
+        </tech>
+        <urlparser>
+            <class>org.zaproxy.zap.model.StandardParameterParser</class>
+            <config>{"kvps":"&amp;","kvs":"=","struct":[]}</config>
+        </urlparser>
+        <postparser>
+            <class>org.zaproxy.zap.model.StandardParameterParser</class>
+            <config>{"kvps":"&amp;","kvs":"=","struct":[]}</config>
+        </postparser>
+        <authentication>
+            <type>2</type>
+            <loggedin>Logout</loggedin>
+            <loggedout>Register a new account</loggedout>
+            <form>
+                <loginurl>https://dvna:9090/login</loginurl>
+                <loginbody>username={%username%}&amp;password={%password%}</loginbody>
+            </form>
+        </authentication>
+        <users>
+            <user>1;true;dGVzdGVy;2;dGVzdGVy~dGVzdGVyMTIz~</user>
+        </users>
+        <forceduser>1</forceduser>
+        <session>
+            <type>0</type>
+        </session>
+        <authorization>
+            <type>0</type>
+            <basic>
+                <header>/login</header>
+                <body>Redirecting to</body>
+                <logic>OR</logic>
+                <code>302</code>
+            </basic>
+        </authorization>
+    </context>
+</configuration>

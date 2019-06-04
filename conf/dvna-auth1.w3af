@@ -1,0 +1,41 @@
+plugins
+  output console, csv_file, html_file
+  output config html_file
+    set output_file /share/dvna-w3af.html
+    set verbose True
+    save
+    view
+    back
+  output config csv_file
+    set output_file /share/dvna-w3af.csv
+    set verbose True
+    save
+    view
+    back
+  output config console
+    set verbose True
+    save
+    back
+  crawl web_spider
+  crawl config web_spider
+    set only_forward True
+    view
+    back
+  audit xss
+  auth config generic
+    set username tester
+    set check_url http://dvna:9090/learn
+    set check_string Logout
+    set password_field  password
+    set username_field username
+    set auth_url http://dvna:9090/login
+    set password tester123
+    view
+    back
+  back
+target
+  set target http://dvna:9090
+  view
+  back
+start
+exit

@@ -1,0 +1,48 @@
+version: "2"
+services:
+    dvna:
+        image: appsecco/dvna:sqlite
+        container_name: dvna
+        volumes:
+            - /private/var/tmp/share:/share
+        ports:
+            - "9090:9090"
+        command: ["npm", "start"]
+    zap:
+        image: owasp/zap2docker-weekly:latest
+        #image: ictu/zap2docker-weekly:latest
+        container_name: zap
+        volumes:
+            - ../SharedData:/zap/wrk
+        ports:
+            - "8080:8080"
+            - "8090:8090"
+        user: "zap"
+        stdin_open: true
+        tty: true
+        command: /bin/bash
+    w3af:
+        image: andresriancho/w3af:latest
+        container_name: w3af
+        volumes:
+            - ../SharedData:/share
+        ports:
+            - "2222:22"
+            - "44444:44444"
+        #user: "w3af"
+        stdin_open: true
+        tty: true
+        command: /bin/bash
+    arachni:
+        image: arachni/arachni:latest
+        container_name: arachni
+        volumes:
+            - ../SharedData:/share
+        ports:
+            - "127.0.0.1:2222:22"
+            - "127.0.0.1:7331:7331"
+            - "127.0.0.1:9292:9292"
+        #user: "root"
+        stdin_open: true
+        tty: true
+        command: /bin/bash
