@@ -10,7 +10,7 @@ __CONTENT__
     - [Initial Setup](#initial-setup)
         - [Get Docker Images](#get-docker-images)
         - [Start & Configure Test Web App](#start--configure-test-web-app)
-    - [Sanity Checks](#sanity-checks)
+        - [Sanity Checks for App Scanners](#sanity-checks-for-app-scanners)
     - [Scanning in the Dev Pipeline](#scanning-in-the-dev-pipeline)
         - [Scan with multiple scanners](#scan-with-multiple-scanners)
         - [Generate a Consolidated Report](#generate-a-consolidated-report)
@@ -56,7 +56,7 @@ Start, configure and verify DVNA, as the test web app.
     - Create a test account by clicking _Register a new account_ and using Login __tester__ Password __tester123__
     - Test new account and credentials 
 
-## Sanity Checks
+### Sanity Checks for App Scanners
 
 - Run a [test ZAP scan](2-run-zap-baseline-scan.sh) via `./2-run-zap-baseline-scan.sh` [(_example here..._)](doc/TestZAP.md)
 - Run a [test W3AF scan](3-run-w3af-scan.sh) via `./3-run-w3af-scan.sh` [(_example here..._)](doc/TestW3AF.md)
@@ -66,20 +66,22 @@ Start, configure and verify DVNA, as the test web app.
 
 ### Scan with multiple scanners
 
-__TODO__: Develop the following:
-* Run __SCRIPT_NAME__
+__TODO__: Develop the following.
+
+After every integration / release, dep:
+* Run __{SCRIPT_NAME} {URL}__
 * Check that script ran successfully
 
 ### Generate a Consolidated Report
 
 __TODO__: Develop the following:
-* Open report __REPORT_FILE_NAME__
+* Open report __{REPORT_FILE_NAME}__
 * Check that report has ...
 
 ### Automation Hooks
 
 __TODO__: Develop the following:
-* To automate dynamic app scanning within your pipeline, the above has shown that you can ...
+* To automate dynamic app scanning within your pipeline, you can ...
 
 
 ## Reference Information
